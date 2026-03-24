@@ -335,12 +335,18 @@ NOT downloaded (optional, can add later):
 
 download-knowledge.sh script updated with all verified URLs and sizes.
 
-### Phase 3: GitHub Repo & Final Testing — TODO
-- Create GitHub repo
-- Test full workflow on Windows (double-click bat → AI works)
-- Test Kiwix with ZIM files
-- Final audit of all scripts and docs
-- Start Wikipedia EN maxi (115 GB) download if space allows
+### Phase 3: GitHub Repo & Final Testing — DONE (2026-03-24)
+- GitHub repo: https://github.com/gabrielursan-beep/red-alert-llm
+- Fixed all .bat files: removed Unicode box-drawing chars (cause CMD errors), removed chcp 65001
+- verify-setup.bat tested: 11 PASS / 0 FAIL / 2 WARN (Kiwix desktop = manual download)
+- llamafile live test passed: health OK, Qwen3-4B thinking mode working, Romanian output correct
+- All 33 files committed and pushed (4,533 lines)
+- Binary files (.gguf, .zim, .exe, engines) correctly excluded by .gitignore
+
+### Optional: Still Available to Download
+- wikipedia_en_all_maxi_2026-02.zim — 115.5 GB (full EN Wikipedia with images)
+- electronics.stackexchange.com_en_all_2026-02.zim — 3.9 GB
+- wikibooks_en_all_maxi_2026-02.zim — ~2 GB
 
 ## Testing Checklist
 - [ ] Windows: double-click start-windows.bat → LLM loads → browser opens → chat works
