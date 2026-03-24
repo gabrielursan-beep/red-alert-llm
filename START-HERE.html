@@ -418,25 +418,34 @@ chmod +x setup/setup-mac.sh
   const platform = navigator.platform?.toLowerCase() || '';
   let os = 'unknown', icon = '&#x1F4BB;', instructions = '';
 
-  if (ua.includes('win')) {
+  // Check iOS/iPadOS first (iPadOS 13+ reports as Macintosh)
+  const isIOS = ua.includes('iphone') || ua.includes('ipad') ||
+    (ua.includes('mac') && 'ontouchend' in document);
+
+  if (ua.includes('android')) {
+    os = 'Android'; icon = '&#128241;';
+    instructions = 'Install PocketPal AI, copy model from <code>models/mobile/</code> to your phone.';
+  } else if (isIOS) {
+    os = 'iOS'; icon = '&#127822;';
+    instructions = 'Install PocketPal AI from App Store, copy model via Files app.';
+  } else if (ua.includes('win')) {
     os = 'Windows'; icon = '&#x1F5A5;';
     instructions = 'Double-click <code>launchers\\start-windows.bat</code> to launch the AI assistant.';
   } else if (ua.includes('mac')) {
     os = 'macOS'; icon = '&#127822;';
     instructions = 'Double-click <code>launchers/start-macos.command</code> to launch the AI assistant.';
-  } else if (ua.includes('linux') && !ua.includes('android')) {
+  } else if (ua.includes('linux')) {
     os = 'Linux'; icon = '&#128039;';
     instructions = 'Run <code>./launchers/start-linux.sh</code> in terminal.';
-  } else if (ua.includes('android')) {
-    os = 'Android'; icon = '&#128241;';
-    instructions = 'Install PocketPal AI, copy model from <code>models/mobile/</code> to your phone.';
-  } else if (ua.includes('iphone') || ua.includes('ipad')) {
-    os = 'iOS'; icon = '&#127822;';
-    instructions = 'Install PocketPal AI from App Store, copy model via Files app.';
+  } else {
+    os = 'Unknown'; icon = '&#x1F4BB;';
+    instructions = 'See the tabs below for your platform. Start with the Windows or macOS tab.';
   }
 
   document.getElementById('os-icon').innerHTML = icon;
-  document.getElementById('os-name').innerHTML = 'Detected: <strong>' + os + '</strong>';
+  document.getElementById('os-name').innerHTML = os !== 'Unknown'
+    ? 'Detected: <strong>' + os + '</strong>'
+    : 'Could not detect your OS. Choose your platform below:';
   document.getElementById('os-instructions').innerHTML = instructions;
 
   // Auto-select tab

@@ -41,7 +41,7 @@ Everything runs offline. Your data never leaves your device.
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/red-alert-llm.git
+git clone https://github.com/gabrielursan-beep/red-alert-llm.git
 ```
 
 Copy the entire `red-alert-llm/` folder to your USB SSD root.
@@ -94,8 +94,8 @@ The launcher:
 | **Qwen3-8B** | 5 GB | 12 GB | Enhanced reasoning |
 | **Qwen3-14B** | 9 GB | 16 GB | Premium quality |
 | Gemma-3-4B | 2.5 GB | 8 GB | Alternative (Google) |
-| Gemma-3-12B | 7 GB | 16 GB | Alternative (Google) |
-| Whisper Large V3 | 3 GB | 4 GB | Speech-to-text |
+
+The setup script auto-downloads the best model for your RAM. A mobile-optimized Qwen3-4B (Q3_K_M, 2 GB) is also downloaded for phone use.
 
 The launcher automatically selects the best model for your hardware.
 
@@ -105,10 +105,10 @@ The launcher automatically selects the best model for your hardware.
 |---------|------|-------------|
 | Wikipedia EN (full) | 115 GB | Complete English Wikipedia with images |
 | Wikipedia EN (text) | 48 GB | Same articles, no images (lighter) |
-| Wikipedia RO (full) | 13 GB | Complete Romanian Wikipedia |
+| Wikipedia RO (full) | 10.6 GB | Complete Romanian Wikipedia |
 | WikiMed Medical | 2 GB | 73,000+ medical articles |
 | iFixit Repairs | 3.3 GB | Electronics & device repair guides |
-| Wiktionary EN | 6 GB | English dictionary + etymology |
+| Wiktionary EN | 8.2 GB | English dictionary + etymology |
 | Wikivoyage | 1 GB | Travel guides worldwide |
 | SuperUser Q&A | 3.7 GB | Computer troubleshooting |
 | DIY Home Repair | 1.9 GB | Home improvement Q&A |

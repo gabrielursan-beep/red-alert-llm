@@ -52,8 +52,8 @@
       "languages": 119,
       "romanian_support": true,
       "thinking_mode": true,
-      "description_en": "Premium model. Near-GPT-4 quality for many tasks. Requires 16GB+ RAM.",
-      "description_ro": "Model premium. Calitate apropiata de GPT-4 pentru multe sarcini. Necesita 16GB+ RAM.",
+      "description_en": "Premium model. Comparable to GPT-3.5 for many tasks. Best open-source quality for 16GB+ RAM.",
+      "description_ro": "Model premium. Comparabil cu GPT-3.5 pentru multe sarcini. Cea mai buna calitate open-source pentru 16GB+ RAM.",
       "tier": "premium",
       "primary": false
     },

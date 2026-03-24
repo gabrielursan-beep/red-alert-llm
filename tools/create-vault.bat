@@ -1,9 +1,8 @@
 @echo off
-chcp 65001 >nul 2>&1
 echo.
-echo  ╔══════════════════════════════════════════╗
-echo  ║  Red Alert LLM — Create Encrypted Vault  ║
-echo  ╚══════════════════════════════════════════╝
+echo  ============================================
+echo   Red Alert LLM - Create Encrypted Vault
+echo  ============================================
 echo.
 echo  This will create a 200 GB encrypted container.
 echo  You need VeraCrypt installed or in apps\veracrypt\

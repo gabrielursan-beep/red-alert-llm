@@ -1,10 +1,10 @@
 #!/bin/bash
+# Red Alert LLM — KoboldCpp Linux Launcher
 DIR="$(cd "$(dirname "$0")/.." && pwd)"
-xattr -dr com.apple.quarantine "$DIR/engines/" 2>/dev/null
 
 # Detect RAM
-RAM_BYTES=$(sysctl -n hw.memsize 2>/dev/null || echo 8589934592)
-RAM_GB=$((RAM_BYTES / 1073741824))
+RAM_KB=$(grep MemTotal /proc/meminfo 2>/dev/null | awk '{print $2}')
+RAM_GB=$((RAM_KB / 1048576))
 
 # Select model based on RAM
 MODEL=""
@@ -25,16 +25,21 @@ elif [ -f "$DIR/models/alternatives/gemma-3-4b-it-q4_k_m.gguf" ]; then
 fi
 
 if [ -z "$MODEL" ]; then
-    echo "[ERROR] No model found! Run setup first: ./setup/setup-mac.sh"
-    read -p "Press Enter..."
+    echo "[ERROR] No model found! Run setup first: ./setup/setup-linux.sh"
     exit 1
 fi
 
-KOBOLD="$DIR/engines/koboldcpp/koboldcpp-mac-arm64"
+KOBOLD="$DIR/engines/koboldcpp/koboldcpp-linux-x64-nocuda"
 chmod +x "$KOBOLD" 2>/dev/null
+
+# Check for NVIDIA GPU
+GPU_FLAGS=""
+if command -v nvidia-smi &>/dev/null; then
+    echo "  NVIDIA GPU detected — CUDA acceleration enabled"
+    GPU_FLAGS="--gpulayers 999"
+fi
 
 echo ""
 echo "  Starting KoboldCpp with: $MODEL_NAME (${RAM_GB} GB RAM)"
 echo ""
-"$KOBOLD" --model "$MODEL" --host 127.0.0.1 --gpulayers 999 --contextsize 4096 --port 5001
-read -p "Press Enter to exit..."
+"$KOBOLD" --model "$MODEL" --host 127.0.0.1 $GPU_FLAGS --contextsize 4096 --port 5001

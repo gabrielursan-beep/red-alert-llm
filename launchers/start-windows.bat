@@ -114,7 +114,7 @@ echo  Starting KoboldCpp... / Se porneste KoboldCpp...
 echo  Loading model: %MODEL_NAME%
 echo.
 
-"%DRIVE%\engines\koboldcpp\koboldcpp-nocuda.exe" --model "%MODEL_PATH%" --contextsize 4096 --port 5001
+"%DRIVE%\engines\koboldcpp\koboldcpp-nocuda.exe" --model "%MODEL_PATH%" --host 127.0.0.1 --contextsize 4096 --port 5001
 goto :end
 
 :end

@@ -76,7 +76,7 @@
       "id": "wiktionary-en",
       "name": "Wiktionary English",
       "name_ro": "Wiktionary Engleza",
-      "filename_pattern": "wiktionary_en_all_maxi_*.zim",
+      "filename_pattern": "wiktionary_en_all_nopic_*.zim",
       "url_base": "https://download.kiwix.org/zim/wiktionary/",
       "approx_size_gb": 8.2,
       "priority": "medium",

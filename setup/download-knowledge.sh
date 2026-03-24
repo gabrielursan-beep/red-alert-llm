@@ -67,8 +67,9 @@ echo -e "    ${CYAN}[F]${NC} Full     — ~200 GB (Everything including full Wik
 echo -e "    ${CYAN}[C]${NC} Custom   — Choose individual downloads"
 echo ""
 read -p "  Your choice / Alegerea dvs [M/R/F/C]: " PROFILE
+PROFILE_UPPER=$(echo "$PROFILE" | tr '[:lower:]' '[:upper:]')
 
-case "${PROFILE^^}" in
+case "$PROFILE_UPPER" in
     M)
         SELECTED="2 4 5"
         echo -e "${GREEN}  Minimal profile selected (~55 GB)${NC}"
@@ -100,22 +101,23 @@ esac
 
 echo ""
 
-# --- Calculate total size ---
-TOTAL_SIZE=0
+# --- Show selected items ---
+echo -e "${YELLOW}  Selected downloads:${NC}"
 for sel in $SELECTED; do
     for kb in "${KNOWLEDGE_BASES[@]}"; do
         IFS='|' read -r id name url size dest <<< "$kb"
         if [ "$id" = "$sel" ]; then
-            TOTAL_SIZE=$(echo "$TOTAL_SIZE + $size" | bc 2>/dev/null || echo "$TOTAL_SIZE")
+            echo "    - $name"
         fi
     done
 done
 
-echo -e "${YELLOW}  Total download size: ~${TOTAL_SIZE} GB${NC}"
+echo ""
 echo -e "${YELLOW}  Make sure you have enough space on the SSD.${NC}"
 echo ""
 read -p "  Continue? / Continuati? [Y/n]: " CONFIRM
-if [ "${CONFIRM,,}" = "n" ]; then
+CONFIRM_LOWER=$(echo "$CONFIRM" | tr '[:upper:]' '[:lower:]')
+if [ "$CONFIRM_LOWER" = "n" ]; then
     echo "  Cancelled. / Anulat."
     exit 0
 fi

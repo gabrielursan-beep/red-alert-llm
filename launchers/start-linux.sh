@@ -34,7 +34,7 @@ elif [ -f "$DIR/models/alternatives/gemma-3-4b-it-q4_k_m.gguf" ]; then
 fi
 
 if [ -z "$MODEL_PATH" ]; then
-    echo "  [ERROR] No model found! Run setup first: ./setup/setup-mac.sh"
+    echo "  [ERROR] No model found! Run setup first: ./setup/setup-linux.sh"
     exit 1
 fi
 

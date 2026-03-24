@@ -89,7 +89,7 @@ User double-clicks launcher script
 | Flag | Purpose | When to use |
 |------|---------|-------------|
 | `-m <path>` | Path to GGUF model | Always |
-| `--host 0.0.0.0` | Listen on all interfaces | Always (or 127.0.0.1 for local only) |
+| `--host 127.0.0.1` | Listen on localhost only (secure) | Always (use 0.0.0.0 only for LAN sharing) |
 | `--port 8080` | HTTP port | Always |
 | `-c 4096` | Context size (tokens) | Always (increase for longer conversations) |
 | `-ngl 999` | GPU layers (offload all to GPU) | macOS Metal, NVIDIA CUDA |
@@ -201,11 +201,11 @@ USB-C/Lightning connects SSD to iPhone/iPad
 |---------|----------|------|----------|-------------|
 | Wikipedia EN (full) | wikipedia_en_all_maxi_*.zim | 115 GB | Essential | 6.8M articles with images |
 | Wikipedia EN (text) | wikipedia_en_all_nopic_*.zim | 48 GB | Backup | Same articles, no images |
-| Wikipedia RO (full) | wikipedia_ro_all_maxi_*.zim | 13 GB | Essential | Romanian Wikipedia with images |
+| Wikipedia RO (full) | wikipedia_ro_all_maxi_*.zim | 10.6 GB | Essential | Romanian Wikipedia with images |
 | Wikipedia RO (text) | wikipedia_ro_all_nopic_*.zim | 3.4 GB | Backup | For storage-limited devices |
 | WikiMed | mdwiki_en_all_maxi_*.zim | 2 GB | High | 73,000+ medical articles |
 | iFixit EN | ifixit_en_all_*.zim | 3.3 GB | High | Electronics & device repair |
-| Wiktionary EN | wiktionary_en_all_maxi_*.zim | 6 GB | Medium | Dictionary + etymology |
+| Wiktionary EN | wiktionary_en_all_nopic_*.zim | 8.2 GB | Medium | Dictionary + etymology |
 | Wikivoyage EN | wikivoyage_en_all_maxi_*.zim | 1 GB | Medium | Travel guides worldwide |
 | SuperUser | superuser.com_*.zim | 3.7 GB | Medium | Tech support Q&A |
 | DIY SE | diy.stackexchange.com_*.zim | 1.9 GB | Medium | Home repair Q&A |
@@ -331,7 +331,7 @@ function select_model(ram_gb):
     elif ram_gb >= 8:
         return "models/primary/qwen3-4b-q4_k_m.gguf"     # 2.5 GB model
     elif ram_gb >= 6:
-        return "models/alternatives/gemma-3-4b-q4_k_m.gguf"  # 2.5 GB lighter
+        return "models/alternatives/gemma-3-4b-it-q4_k_m.gguf"  # 2.5 GB lighter
     else:
         warn("Insufficient RAM. Minimum 6 GB required.")
         exit(1)
@@ -408,7 +408,7 @@ Measured with Qwen3-4B Q4_K_M, 4096 context, prompt eval + generation:
 ### 8.1 LLM Security
 - **All inference is local** — no data leaves the device
 - **No telemetry** — llamafile and KoboldCpp do not phone home
-- **Network exposure** — by default, llamafile listens on 0.0.0.0:8080. Change to 127.0.0.1 if on shared network
+- **Network exposure** — launcher scripts bind to 127.0.0.1 (localhost only). To share on LAN, change to 0.0.0.0 manually
 - **Model output** — LLMs can hallucinate. Medical/legal information should be cross-referenced with Kiwix knowledge bases
 
 ### 8.2 USB SSD Security
@@ -552,7 +552,7 @@ If the user wants to share the AI + Wikipedia with other devices on the same WiF
                          kiwix-serve :8888
 ```
 
-To enable: use `--host 0.0.0.0` (already default in launcher scripts). Other devices on the same network can access `http://<host-ip>:8080` for AI chat and `http://<host-ip>:8888` for Wikipedia.
+To enable: change `--host 127.0.0.1` to `--host 0.0.0.0` in the launcher script. Then other devices on the same network can access `http://<host-ip>:8080` for AI chat and `http://<host-ip>:8888` for Wikipedia.
 
 ---
 

@@ -85,7 +85,7 @@ if [ "$choice" = "2" ]; then
         exit 1
     fi
 
-    "$KOBOLD" --model "$MODEL_PATH" --gpulayers 999 --contextsize 4096 --port 5001
+    "$KOBOLD" --model "$MODEL_PATH" --host 127.0.0.1 --gpulayers 999 --contextsize 4096 --port 5001
 else
     # llamafile
     echo ""

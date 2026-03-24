@@ -41,7 +41,7 @@ SSD-ul Kingston vine deja formatat ExFAT — **nu trebuie sa faceti nimic**. Dac
 
 ### Varianta 1: Cu Git (recomandat)
 ```bash
-git clone https://github.com/YOUR_USERNAME/red-alert-llm.git
+git clone https://github.com/gabrielursan-beep/red-alert-llm.git
 ```
 Copiati folderul `red-alert-llm/` pe SSD.
 
@@ -241,7 +241,7 @@ Un fisier de 200 GB (`vault.hc`) care functioneaza ca un hard disk virtual cript
 Nu. Totul functioneaza offline. Internetul e necesar doar pentru setup (descarcarea initiala).
 
 **Cat costa?**
-Software-ul este gratuit. Platiti doar SSD-ul (~250-300 RON pentru 1TB).
+Software-ul este gratuit. Platiti doar SSD-ul (743 RON pentru Kingston 1TB — [eMAG.ro](https://bit.ly/4uEu0nA)*).
 
 **Este sigur sa pastrez date personale?**
 Da, in seiful VeraCrypt. Fara parola, datele sunt necitibile. In afara seifului, oricine cu acces fizic la SSD poate vedea fisierele.
