@@ -178,7 +178,7 @@ USB-C/Lightning connects SSD to iPhone/iPad
 │  USB SSD                          │
 │  knowledge/                       │
 │  ├── wikipedia_en_all_maxi.zim    │  115 GB
-│  ├── wikipedia_ro_all_maxi.zim    │   13 GB
+│  ├── wikipedia_ro_all_maxi.zim    │   10.6 GB
 │  ├── mdwiki_en_all.zim            │    2 GB
 │  └── ...                          │
 └──────────────────────────────────┘
@@ -202,8 +202,8 @@ USB-C/Lightning connects SSD to iPhone/iPad
 | Wikipedia EN (full) | wikipedia_en_all_maxi_*.zim | 115 GB | Essential | 6.8M articles with images |
 | Wikipedia EN (text) | wikipedia_en_all_nopic_*.zim | 48 GB | Backup | Same articles, no images |
 | Wikipedia RO (full) | wikipedia_ro_all_maxi_*.zim | 10.6 GB | Essential | Romanian Wikipedia with images |
-| Wikipedia RO (text) | wikipedia_ro_all_nopic_*.zim | 3.4 GB | Backup | For storage-limited devices |
-| WikiMed | mdwiki_en_all_maxi_*.zim | 2 GB | High | 73,000+ medical articles |
+| Wikipedia RO (text) | wikipedia_ro_all_nopic_*.zim | 2.3 GB | Backup | For storage-limited devices |
+| WikiMed | mdwiki_en_all_maxi_*.zim | 2.1 GB | High | 73,000+ medical articles |
 | iFixit EN | ifixit_en_all_*.zim | 3.3 GB | High | Electronics & device repair |
 | Wiktionary EN | wiktionary_en_all_nopic_*.zim | 8.2 GB | Medium | Dictionary + etymology |
 | Wikivoyage EN | wikivoyage_en_all_maxi_*.zim | 1 GB | Medium | Travel guides worldwide |
@@ -455,11 +455,11 @@ AI Models                                         ~33 GB
 Knowledge Bases                                  ~200 GB
 ├── Wikipedia EN (full with images)             115.0 GB
 ├── Wikipedia EN (text only, backup)             48.0 GB
-├── Wikipedia RO (full)                          13.0 GB
-├── Wikipedia RO (text only, for mobile)          3.4 GB
+├── Wikipedia RO (full)                          10.6 GB
+├── Wikipedia RO (text only, for mobile)          2.3 GB
 ├── WikiMed medical encyclopedia                  2.0 GB
 ├── iFixit repair guides                          3.3 GB
-├── Wiktionary EN                                 6.0 GB
+├── Wiktionary EN                                 8.2 GB
 ├── Wikivoyage EN                                 1.0 GB
 ├── SuperUser Q&A                                 3.7 GB
 ├── DIY StackExchange                             1.9 GB

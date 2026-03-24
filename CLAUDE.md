@@ -105,7 +105,7 @@ Model sources:
 | Core AI engines | llamafile + KoboldCpp (all platforms) | ~1 GB |
 | Primary models | Qwen3 4B/8B/14B + Gemma 4B/12B + Whisper | ~29 GB |
 | Mobile models | Q3_K_M smaller quants for phones | ~4 GB |
-| Knowledge bases | Wikipedia EN maxi (115 GB) + nopic (48 GB) + RO (13 GB) + WikiMed + iFixit + StackExchange + more | ~200 GB |
+| Knowledge bases | Wikipedia EN maxi (115 GB) + nopic (48 GB) + RO (10.6 GB) + WikiMed + iFixit + StackExchange + more | ~200 GB |
 | Apps | Kiwix (all platforms) + VeraCrypt + Android APKs | ~1 GB |
 | Encrypted vault | vault.hc VeraCrypt container | ~200 GB |
 | **Total used** | | **~435 GB** |
@@ -151,11 +151,11 @@ RED-ALERT-LLM/                          (SSD root)
 ├── knowledge/
 │   ├── wikipedia_en_all_maxi.zim        # ~115 GB
 │   ├── wikipedia_en_all_nopic.zim       # ~48 GB (text-only fallback)
-│   ├── wikipedia_ro_all_maxi.zim        # ~13 GB
-│   ├── wikipedia_ro_all_nopic.zim       # ~3.4 GB
+│   ├── wikipedia_ro_all_maxi.zim        # ~10.6 GB
+│   ├── wikipedia_ro_all_nopic.zim       # ~2.3 GB
 │   ├── mdwiki_en_all.zim               # Medical encyclopedia
 │   ├── ifixit_en_all.zim               # Repair guides ~3.3 GB
-│   ├── wiktionary_en_all.zim           # Dictionary ~6 GB
+│   ├── wiktionary_en_all.zim           # Dictionary ~8.2 GB
 │   ├── wikivoyage_en_all.zim           # Travel ~1 GB
 │   └── stackexchange/                   # Selected sites
 │       ├── superuser.com.zim

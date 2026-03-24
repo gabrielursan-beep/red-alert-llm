@@ -74,14 +74,14 @@ Install one of these from the App Store:
 2. For best results, copy a ZIM file to your device:
    - Files app → SSD → knowledge/ → long-press a .zim file → Copy
    - Navigate to On My iPhone → Paste
-   - Recommended: `wikipedia_ro_all_nopic_*.zim` (~3.4 GB)
+   - Recommended: `wikipedia_ro_all_nopic_*.zim` (~2.3 GB)
 3. Open Kiwix → Library → "Open file" → select the .zim file
 
 **Note:** Large ZIM files (Wikipedia EN at 48-115 GB) won't fit on most iPhones. Use the Romanian text-only version or WikiMed.
 
 ## Tips / Sfaturi
 
-- **Storage:** iPhone storage fills up fast. The 2 GB model + 3.4 GB Romanian Wikipedia = ~5.5 GB needed.
+- **Storage:** iPhone storage fills up fast. The 2 GB model + 2.3 GB Romanian Wikipedia = ~4.3 GB needed.
 - **Battery:** AI inference drains battery quickly. Keep your iPhone charged.
 - **Heat:** Normal for the phone to get warm during AI use.
 - **Speed:** iPhone 15 Pro gets ~15-20 tok/s. Older iPhones will be slower.

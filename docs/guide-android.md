@@ -66,7 +66,7 @@ The Play Store version has Android 11+ storage restrictions that prevent reading
 - **Phone gets hot:** Normal during AI inference. Take breaks if it gets too hot.
 - **Speed:** Expect 5-15 tokens/second on most modern phones. Older phones will be slower.
 - **RAM issues:** If the app crashes, your phone doesn't have enough RAM. Try closing all other apps.
-- **Smaller ZIM for phone:** If you want Wikipedia on your phone (not from SSD), copy `wikipedia_ro_all_nopic_*.zim` (~3.4 GB) — it's small enough for most phones.
+- **Smaller ZIM for phone:** If you want Wikipedia on your phone (not from SSD), copy `wikipedia_ro_all_nopic_*.zim` (~2.3 GB) — it's small enough for most phones.
 
 ## Troubleshooting / Rezolvarea problemelor
 

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Alert LLM — Manual de Urgenta</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 12mm 15mm;
+  }
+
+  body {
+    font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #222;
+    background: #eee;
+  }
+
+  .page {
+    background: white;
+    width: 210mm;
+    min-height: 267mm;
+    margin: 10mm auto;
+    padding: 12mm 15mm;
+    page-break-after: always;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .print-note {
+    text-align: center;
+    padding: 10px;
+    color: #888;
+    font-size: 10pt;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; width: auto; min-height: auto; padding: 0; }
+    .print-note { display: none; }
+  }
+
+  h1 {
+    color: #e74c3c;
+    font-size: 32pt;
+    text-align: center;
+    margin-bottom: 4mm;
+    letter-spacing: 2px;
+  }
+  h1 .dot { color: #e74c3c; }
+  .subtitle {
+    text-align: center;
+    font-size: 14pt;
+    color: #555;
+    margin-bottom: 8mm;
+  }
+  h2 {
+    color: #e74c3c;
+    font-size: 20pt;
+    margin-bottom: 4mm;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 2mm;
+  }
+  h3 {
+    color: #333;
+    font-size: 13pt;
+    margin: 5mm 0 2mm;
+  }
+
+  .cover-box {
+    background: #fef9f0;
+    border: 2px solid #e74c3c;
+    border-radius: 6px;
+    padding: 5mm;
+    margin: 4mm 0;
+  }
+  .cover-box ul { padding-left: 6mm; }
+  .cover-box li { margin: 1mm 0; }
+
+  .warning {
+    border: 2px solid #e74c3c;
+    border-left: 6px solid #e74c3c;
+    background: #fff5f5;
+    padding: 3mm 4mm;
+    border-radius: 4px;
+    margin: 3mm 0;
+    font-size: 11pt;
+  }
+  .warning strong { color: #e74c3c; }
+
+  .info {
+    border: 2px solid #3498db;
+    border-left: 6px solid #3498db;
+    background: #f0f7ff;
+    padding: 3mm 4mm;
+    border-radius: 4px;
+    margin: 3mm 0;
+    font-size: 11pt;
+  }
+
+  ol.steps {
+    padding-left: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+  ol.steps > li {
+    counter-increment: step;
+    margin: 2.5mm 0;
+    padding-left: 10mm;
+    position: relative;
+  }
+  ol.steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #e74c3c;
+    color: white;
+    width: 7mm;
+    height: 7mm;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 11pt;
+  }
+
+  code {
+    font-family: Consolas, 'Courier New', monospace;
+    background: #f0f0f0;
+    padding: 0.5mm 2mm;
+    border-radius: 2px;
+    font-size: 10.5pt;
+    word-break: break-all;
+  }
+
+  .phone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+    margin-top: 3mm;
+  }
+  .phone-col {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 3mm;
+  }
+  .phone-col h3 {
+    text-align: center;
+    color: white;
+    padding: 2mm;
+    border-radius: 4px;
+    margin: -3mm -3mm 3mm -3mm;
+    font-size: 13pt;
+  }
+  .android h3 { background: #3ddc84; color: #1a1a1a; }
+  .ios h3 { background: #333; color: white; }
+
+  .phone-col ol.steps > li { font-size: 10.5pt; margin: 2mm 0; padding-left: 9mm; }
+  .phone-col ol.steps > li::before { width: 6mm; height: 6mm; font-size: 9pt; }
+  .phone-col p { font-size: 10.5pt; }
+
+  .footer {
+    margin-top: 4mm;
+    padding-top: 2mm;
+    border-top: 1px solid #ddd;
+    font-size: 8.5pt;
+    color: #888;
+    text-align: center;
+  }
+  .footer a { color: #888; }
+
+  .section-stop {
+    background: #f8f8f8;
+    border-radius: 4px;
+    padding: 3mm 4mm;
+    margin-top: 3mm;
+  }
+  .section-stop strong { color: #e74c3c; }
+</style>
+</head>
+<body>
+
+<p class="print-note">Printati acest document pe hartie A4 (Ctrl+P sau Cmd+P)</p>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page">
+
+  <h1>RED ALERT LLM</h1>
+  <p class="subtitle">Manual de Urgenta — Asistent AI Offline pe SSD USB</p>
+
+  <div class="cover-box">
+    <h3>Ce este?</h3>
+    <p>Red Alert LLM este un kit AI portabil care functioneaza <strong>FARA internet</strong>.
+    SSD-ul contine:</p>
+    <ul>
+      <li><strong>Un asistent AI inteligent</strong> — vorbeste romana si alte 118 limbi</li>
+      <li><strong>Wikipedia completa</strong> — romana + engleza + enciclopedie medicala</li>
+      <li><strong>Ghiduri practice</strong> — reparatii electronice, calatorii, bricolaj</li>
+      <li>Totul gata configurat — doar conectati SSD-ul si porniti</li>
+    </ul>
+  </div>
+
+  <div class="cover-box">
+    <h3>Ce aveti nevoie</h3>
+    <ul>
+      <li><strong>SSD-ul USB</strong> (acesta pe care l-ati primit)</li>
+      <li><strong>Un computer</strong> cu minim 8 GB RAM (Windows sau Mac)</li>
+      <li><strong>SAU un telefon</strong> Android/iPhone cu minim 6 GB RAM</li>
+      <li>Port USB liber (USB-A clasic sau USB-C)</li>
+    </ul>
+  </div>
+
+  <div class="warning">
+    <strong>REGULA DE AUR — Scoateti SSD-ul IN SIGURANTA!</strong><br>
+    <strong>Windows:</strong> click dreapta pe SSD in "Acest PC" &rarr; Eject<br>
+    <strong>macOS:</strong> trageti SSD-ul in Cos (Trash) sau click dreapta &rarr; Eject<br>
+    <strong>Telefon:</strong> notificare "Eject" inainte de deconectare<br><br>
+    <strong>NU scoateti SSD-ul cat timp AI-ul sau Wikipedia ruleaza!</strong><br>
+    Opriti mai intai (vedeti instructiunile de oprire pe fiecare pagina).
+  </div>
+
+  <div class="cover-box">
+    <h3>Ce gasiti pe SSD</h3>
+    <ul>
+      <li><strong>Asistent AI</strong> — 3 modele de inteligenta artificiala (mic/mediu/mare)</li>
+      <li><strong>Wikipedia Engleza</strong> — 6.8 milioane articole (doar text, 48 GB)</li>
+      <li><strong>Wikipedia Romana</strong> — completa cu imagini (10.6 GB)</li>
+      <li><strong>Enciclopedie Medicala</strong> — 73.000+ articole medicale</li>
+      <li><strong>Ghiduri reparatii</strong> (iFixit), <strong>Calatorii</strong> (Wikivoyage), <strong>Dictionar</strong> (Wiktionary)</li>
+    </ul>
+  </div>
+
+  <div class="cover-box">
+    <h3>Fisierul magic: START-HERE.html</h3>
+    <p>Deschideti fisierul <code>START-HERE.html</code> de pe SSD in orice browser
+    pentru un ghid interactiv care detecteaza automat sistemul dvs.</p>
+  </div>
+
+  <div class="footer">
+    SSD recomandat: Kingston 1TB Dual Portable SSD — <a href="https://bit.ly/4uEu0nA">emag.ro</a> (link afiliat*)<br>
+    * Link afiliat — cumparand prin acest link sustineti proiectul fara cost suplimentar.
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: WINDOWS ==================== -->
+<div class="page">
+
+  <h2>Pe Laptop Windows</h2>
+  <p style="color:#555; margin-bottom:3mm;">Windows 10 sau Windows 11</p>
+
+  <h3>A. Pornire Asistent AI</h3>
+
+  <ol class="steps">
+    <li>Conectati SSD-ul la portul USB al laptopului</li>
+    <li>Deschideti SSD-ul in <strong>"Acest PC"</strong> (sau "This PC")<br>
+        Gasiti folderul <code>red-alert-llm</code></li>
+    <li>Deschideti folderul <code>launchers</code></li>
+    <li>Dublu-click pe <code>start-windows.bat</code></li>
+  </ol>
+
+  <div class="info">
+    <strong>Daca apare un ecran albastru de protectie (SmartScreen):</strong><br>
+    Click <strong>"More info"</strong> (Mai multe informatii) &rarr; apoi <strong>"Run anyway"</strong> (Ruleaza oricum)
+  </div>
+
+  <ol class="steps" style="counter-reset: step 4;">
+    <li>In fereastra neagra, tastati <strong>1</strong> si apasati <strong>Enter</strong><br>
+        <span style="color:#888;">(alegeti llamafile — varianta simpla)</span></li>
+    <li>Asteptati 10-30 secunde — browserul se deschide automat<br>
+        <span style="color:#888;">Daca nu se deschide, tastati in browser:</span> <code>http://localhost:8080</code></li>
+    <li>Scrieti intrebarea in caseta de text si apasati Enter<br>
+        <strong>AI-ul raspunde! Puteti vorbi in romana sau engleza.</strong></li>
+  </ol>
+
+  <h3>B. Pornire Wikipedia Offline</h3>
+
+  <ol class="steps">
+    <li>Din folderul <code>launchers</code>, dublu-click pe <code>start-kiwix-windows.bat</code></li>
+    <li>Se deschide Kiwix — programul de Wikipedia offline</li>
+    <li>Din Kiwix: <strong>File &rarr; Open File</strong> &rarr; navigati la SSD &rarr; <code>knowledge</code> &rarr; alegeti un fisier <code>.zim</code></li>
+    <li>Cautati orice articol, exact ca pe Wikipedia!</li>
+  </ol>
+
+  <div class="info">
+    <strong>Prima data:</strong> Daca Kiwix nu este pe SSD, descarcati-l gratuit de la <strong>kiwix.org</strong><br>
+    Extrageti in folderul <code>apps\kiwix\kiwix-windows\</code> de pe SSD.
+  </div>
+
+  <div class="section-stop">
+    <strong>Oprire:</strong><br>
+    &bull; AI: inchideti fereastra neagra (sau apasati <strong>Ctrl+C</strong> in ea)<br>
+    &bull; Wikipedia: inchideti Kiwix normal (X)<br>
+    &bull; <strong>Scoateti SSD-ul IN SIGURANTA</strong> (click dreapta &rarr; Eject)
+  </div>
+
+</div>
+
+<!-- ==================== PAGE 3: MACOS ==================== -->
+<div class="page">
+
+  <h2>Pe Laptop macOS</h2>
+  <p style="color:#555; margin-bottom:3mm;">MacBook, iMac, Mac Mini (Apple Silicon sau Intel)</p>
+
+  <h3>A. Pornire Asistent AI</h3>
+
+  <ol class="steps">
+    <li>Conectati SSD-ul la portul USB-C<br>
+        <span style="color:#888;">(sau USB-A cu adaptor daca aveti Mac mai vechi)</span></li>
+    <li>Deschideti <strong>Finder</strong> &rarr; in bara laterala, gasiti SSD-ul<br>
+        Navigati la <code>red-alert-llm</code> &rarr; <code>launchers</code></li>
+    <li>Dublu-click pe <code>start-macos.command</code></li>
+  </ol>
+
+  <div class="warning">
+    <strong>Daca macOS spune "nu poate fi deschis" (Gatekeeper):</strong><br>
+    1. Click <strong>DREAPTA</strong> pe fisier &rarr; <strong>Open</strong> &rarr; click <strong>"Open"</strong> din nou<br>
+    2. SAU: <strong>System Settings &rarr; Privacy &amp; Security</strong> &rarr; scroll jos &rarr; <strong>"Open Anyway"</strong><br>
+    Acest lucru se face <strong>o singura data</strong>.
+  </div>
+
+  <ol class="steps" style="counter-reset: step 3;">
+    <li>Se deschide Terminal-ul. Tastati <strong>1</strong> si apasati <strong>Enter</strong><br>
+        <span style="color:#888;">(alegeti llamafile — varianta simpla)</span></li>
+    <li>Asteptati 10-30 secunde — browserul se deschide automat<br>
+        <span style="color:#888;">Daca nu: deschideti Safari si tastati</span> <code>http://localhost:8080</code></li>
+    <li>Scrieti intrebarea si apasati Enter — <strong>AI-ul raspunde!</strong></li>
+  </ol>
+
+  <h3>B. Pornire Wikipedia Offline</h3>
+
+  <ol class="steps">
+    <li>Instalati <strong>Kiwix</strong> din App Store (o singura data, gratuit):<br>
+        App Store &rarr; cautati "Kiwix" &rarr; Install</li>
+    <li>Deschideti Kiwix &rarr; <strong>File &rarr; Open File</strong></li>
+    <li>Navigati la SSD &rarr; <code>knowledge</code> &rarr; alegeti un fisier <code>.zim</code></li>
+    <li>Cautati articole exact ca pe Wikipedia!</li>
+  </ol>
+
+  <div class="section-stop">
+    <strong>Oprire:</strong><br>
+    &bull; AI: inchideti fereastra Terminal (sau apasati <strong>Ctrl+C</strong>)<br>
+    &bull; Wikipedia: inchideti Kiwix normal (<strong>Cmd+Q</strong>)<br>
+    &bull; <strong>Scoateti SSD-ul:</strong> click dreapta pe SSD in Finder &rarr; <strong>Eject</strong><br>
+    &nbsp;&nbsp;SAU trageti iconita SSD-ului in Cos (Trash) din Dock
+  </div>
+
+  <div class="info" style="margin-top: 4mm;">
+    <strong>Performanta:</strong> Pe MacBook cu Apple Silicon (M1, M2, M3, M4),
+    AI-ul raspunde de 3-5 ori mai rapid decat pe un laptop Windows obisnuit.
+    Raspunsurile vin aproape instant.
+  </div>
+
+</div>
+
+<!-- ==================== PAGE 4: PHONES ==================== -->
+<div class="page">
+
+  <h2>Pe Telefon</h2>
+
+  <div class="phone-grid">
+
+    <!-- ANDROID COLUMN -->
+    <div class="phone-col android">
+      <h3>ANDROID</h3>
+      <p><strong>Aveti nevoie de:</strong> telefon cu 6+ GB RAM, port USB-C (sau adaptor OTG)</p>
+
+      <p style="margin-top:2mm;"><strong>Asistent AI:</strong></p>
+      <ol class="steps">
+        <li>Conectati SSD-ul la telefon prin USB-C</li>
+        <li>Instalati <strong>"PocketPal AI"</strong> din Google Play Store (gratuit)</li>
+        <li>Deschideti File Manager &rarr; SSD &rarr; <code>models</code> &rarr; <code>mobile</code></li>
+        <li>Copiati <code>qwen3-4b-q3_k_m.gguf</code> pe telefon<br>
+            <span style="color:#888;">(~2 GB, dureaza 2-3 min)</span></li>
+        <li>Deschideti PocketPal AI &rarr; Import Model &rarr; selectati fisierul copiat</li>
+        <li>Asteptati 30-60 sec — vorbiti cu AI-ul!</li>
+      </ol>
+
+      <p style="margin-top:2mm;"><strong>Wikipedia:</strong></p>
+      <ol class="steps">
+        <li>Din File Manager: SSD &rarr; <code>apps</code> &rarr; <code>android</code></li>
+        <li>Instalati <code>kiwix-android-full.apk</code><br>
+            <span style="color:#888;">(NU versiunea din Play Store)</span></li>
+        <li>Deschideti Kiwix &rarr; SSD &rarr; <code>knowledge</code> &rarr; alegeti un <code>.zim</code></li>
+      </ol>
+    </div>
+
+    <!-- iOS COLUMN -->
+    <div class="phone-col ios">
+      <h3>iPHONE / iPAD</h3>
+      <p><strong>Aveti nevoie de:</strong> iPhone 15+ (USB-C) sau adaptor Lightning, 6+ GB RAM</p>
+
+      <p style="margin-top:2mm;"><strong>Asistent AI:</strong></p>
+      <ol class="steps">
+        <li>Conectati SSD-ul la iPhone prin USB-C</li>
+        <li>Instalati <strong>"PocketPal AI"</strong> din App Store (gratuit)</li>
+        <li>Deschideti <strong>Files</strong> (Fisiere) &rarr; gasiti SSD-ul &rarr; <code>models</code> &rarr; <code>mobile</code></li>
+        <li>Tineti apasat pe <code>qwen3-4b-q3_k_m.gguf</code> &rarr; <strong>Copy</strong><br>
+            Navigati la "On My iPhone" &rarr; <strong>Paste</strong><br>
+            <span style="color:#888;">(~2 GB, tineti ecranul aprins!)</span></li>
+        <li>Deschideti PocketPal AI &rarr; Import from Files &rarr; selectati fisierul</li>
+        <li>Asteptati 30-60 sec — vorbiti cu AI-ul!</li>
+      </ol>
+
+      <p style="margin-top:2mm;"><strong>Wikipedia:</strong></p>
+      <ol class="steps">
+        <li>Instalati <strong>Kiwix</strong> din App Store (gratuit)</li>
+        <li>Din Files, copiati un <code>.zim</code> mic pe iPhone<br>
+            <span style="color:#888;">(Wikipedia RO ~2.3 GB)</span></li>
+        <li>Kiwix &rarr; Open File &rarr; selectati .zim</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <div class="warning" style="margin-top: 3mm;">
+    <strong>Limitari importante pe telefon:</strong><br>
+    &bull; Telefonul se incalzeste in timpul utilizarii AI — <strong>este normal</strong><br>
+    &bull; Bateria se consuma rapid — <strong>tineti telefonul la incarcat</strong><br>
+    &bull; Pe iPhone, modelul TREBUIE copiat pe telefon (nu merge direct de pe SSD)<br>
+    &bull; Telefoanele cu 4 GB RAM pot avea dificultati — inchideti alte aplicatii<br>
+    &bull; Wikipedia EN completa (48 GB) NU incape pe telefon — folositi Wikipedia RO (2.3 GB)
+  </div>
+
+  <div class="footer">
+    Red Alert LLM — proiect open-source |
+    <a href="https://github.com/gabrielursan-beep/red-alert-llm">github.com/gabrielursan-beep/red-alert-llm</a><br>
+    SSD recomandat: Kingston 1TB — <a href="https://bit.ly/4uEu0nA">emag.ro</a> (link afiliat*)
+    &nbsp;|&nbsp; * Sustineti proiectul fara cost suplimentar
+  </div>
+
+</div>
+
+</body>
+</html>

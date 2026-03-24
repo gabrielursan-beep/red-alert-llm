@@ -106,7 +106,7 @@ The launcher automatically selects the best model for your hardware.
 | Wikipedia EN (full) | 115 GB | Complete English Wikipedia with images |
 | Wikipedia EN (text) | 48 GB | Same articles, no images (lighter) |
 | Wikipedia RO (full) | 10.6 GB | Complete Romanian Wikipedia |
-| WikiMed Medical | 2 GB | 73,000+ medical articles |
+| WikiMed Medical | 2.1 GB | 73,000+ medical articles |
 | iFixit Repairs | 3.3 GB | Electronics & device repair guides |
 | Wiktionary EN | 8.2 GB | English dictionary + etymology |
 | Wikivoyage | 1 GB | Travel guides worldwide |
@@ -212,7 +212,7 @@ A: Yes, but loading will be slower (30-60 seconds vs 3-10 seconds on an SSD). On
 A: VeraCrypt uses AES-256 encryption. Without your password, the data is effectively unreadable. Always safely eject the SSD to prevent corruption.
 
 **Q: Can multiple people on the same WiFi use the AI?**
-A: Yes! The AI server listens on your local network. Other devices can access `http://YOUR_IP:8080` for AI chat and `http://YOUR_IP:8888` for Wikipedia (if kiwix-serve is running).
+A: Yes, but you need to edit the launcher script first — change `--host 127.0.0.1` to `--host 0.0.0.0`. Then other devices on the same WiFi can access `http://YOUR_IP:8080` for AI chat. See TECH.md for details.
 
 ---
 
