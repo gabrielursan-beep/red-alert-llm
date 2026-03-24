@@ -1,0 +1,165 @@
+{
+  "knowledge_bases": [
+    {
+      "id": "wikipedia-en-maxi",
+      "name": "Wikipedia English (full with images)",
+      "name_ro": "Wikipedia Engleza (completa cu imagini)",
+      "filename_pattern": "wikipedia_en_all_maxi_*.zim",
+      "url_base": "https://download.kiwix.org/zim/wikipedia/",
+      "approx_size_gb": 115,
+      "priority": "essential",
+      "category": "encyclopedia",
+      "description_en": "Complete English Wikipedia — all 6.8M articles with images. The most comprehensive offline knowledge source.",
+      "description_ro": "Wikipedia completa in engleza — toate cele 6,8M articole cu imagini. Cea mai cuprinzatoare sursa de cunostinte offline."
+    },
+    {
+      "id": "wikipedia-en-nopic",
+      "name": "Wikipedia English (text only)",
+      "name_ro": "Wikipedia Engleza (doar text)",
+      "filename_pattern": "wikipedia_en_all_nopic_*.zim",
+      "url_base": "https://download.kiwix.org/zim/wikipedia/",
+      "approx_size_gb": 47.7,
+      "priority": "recommended",
+      "category": "encyclopedia",
+      "description_en": "Complete English Wikipedia, text only. Same articles, 60% smaller. Good for limited storage.",
+      "description_ro": "Wikipedia completa in engleza, doar text. Aceleasi articole, 60% mai mica. Buna pentru spatiu limitat."
+    },
+    {
+      "id": "wikipedia-ro-maxi",
+      "name": "Wikipedia Romanian (full with images)",
+      "name_ro": "Wikipedia Romana (completa cu imagini)",
+      "filename_pattern": "wikipedia_ro_all_maxi_*.zim",
+      "url_base": "https://download.kiwix.org/zim/wikipedia/",
+      "approx_size_gb": 10.6,
+      "priority": "essential",
+      "category": "encyclopedia",
+      "description_en": "Complete Romanian Wikipedia with images.",
+      "description_ro": "Wikipedia completa in romana cu imagini."
+    },
+    {
+      "id": "wikipedia-ro-nopic",
+      "name": "Wikipedia Romanian (text only)",
+      "name_ro": "Wikipedia Romana (doar text)",
+      "filename_pattern": "wikipedia_ro_all_nopic_*.zim",
+      "url_base": "https://download.kiwix.org/zim/wikipedia/",
+      "approx_size_gb": 2.3,
+      "priority": "recommended",
+      "category": "encyclopedia",
+      "description_en": "Complete Romanian Wikipedia, text only. Small enough to copy to phones.",
+      "description_ro": "Wikipedia completa in romana, doar text. Destul de mica sa o copiezi pe telefon."
+    },
+    {
+      "id": "wikimed",
+      "name": "WikiMed Medical Encyclopedia",
+      "name_ro": "WikiMed Enciclopedie Medicala",
+      "filename_pattern": "mdwiki_en_all_maxi_*.zim",
+      "url_base": "https://download.kiwix.org/zim/other/",
+      "approx_size_gb": 2,
+      "priority": "high",
+      "category": "medical",
+      "description_en": "73,000+ medical articles curated by WikiProject Medicine. Essential for emergencies.",
+      "description_ro": "73.000+ articole medicale curate de WikiProject Medicine. Esential pentru urgente."
+    },
+    {
+      "id": "ifixit-en",
+      "name": "iFixit Repair Guides (English)",
+      "name_ro": "iFixit Ghiduri de Reparatii (Engleza)",
+      "filename_pattern": "ifixit_en_all_*.zim",
+      "url_base": "https://download.kiwix.org/zim/ifixit/",
+      "approx_size_gb": 3.3,
+      "priority": "high",
+      "category": "practical",
+      "description_en": "Detailed electronics and device repair guides with photos. Phones, laptops, appliances.",
+      "description_ro": "Ghiduri detaliate de reparare electronice cu poze. Telefoane, laptopuri, electrocasnice."
+    },
+    {
+      "id": "wiktionary-en",
+      "name": "Wiktionary English",
+      "name_ro": "Wiktionary Engleza",
+      "filename_pattern": "wiktionary_en_all_maxi_*.zim",
+      "url_base": "https://download.kiwix.org/zim/wiktionary/",
+      "approx_size_gb": 8.2,
+      "priority": "medium",
+      "category": "reference",
+      "description_en": "Complete English dictionary with definitions, etymology, pronunciations.",
+      "description_ro": "Dictionar complet englezesc cu definitii, etimologie, pronuntii."
+    },
+    {
+      "id": "wikivoyage-en",
+      "name": "Wikivoyage Travel Guides",
+      "name_ro": "Wikivoyage Ghiduri de Calatorie",
+      "filename_pattern": "wikivoyage_en_all_maxi_*.zim",
+      "url_base": "https://download.kiwix.org/zim/wikivoyage/",
+      "approx_size_gb": 1,
+      "priority": "medium",
+      "category": "travel",
+      "description_en": "Travel guides for every country and major city. Maps, tips, visa info.",
+      "description_ro": "Ghiduri de calatorie pentru fiecare tara si oras major. Harti, sfaturi, info vize."
+    },
+    {
+      "id": "superuser",
+      "name": "SuperUser Q&A",
+      "name_ro": "SuperUser Intrebari si Raspunsuri",
+      "filename_pattern": "superuser.com_en_all_*.zim",
+      "url_base": "https://download.kiwix.org/zim/stack_exchange/",
+      "approx_size_gb": 3.7,
+      "priority": "medium",
+      "category": "tech",
+      "description_en": "Computer troubleshooting Q&A from SuperUser.com.",
+      "description_ro": "Intrebari si raspunsuri despre depanare computere de pe SuperUser.com."
+    },
+    {
+      "id": "diy-stackexchange",
+      "name": "DIY Home Repair Q&A",
+      "name_ro": "DIY Reparatii Casa",
+      "filename_pattern": "diy.stackexchange.com_en_all_*.zim",
+      "url_base": "https://download.kiwix.org/zim/stack_exchange/",
+      "approx_size_gb": 1.9,
+      "priority": "medium",
+      "category": "practical",
+      "description_en": "Home improvement and repair Q&A. Electrical, plumbing, HVAC, tools.",
+      "description_ro": "Intrebari si raspunsuri despre imbunatatirea si repararea casei. Electricitate, instalatii, HVAC."
+    },
+    {
+      "id": "electronics-stackexchange",
+      "name": "Electronics Q&A",
+      "name_ro": "Electronica Intrebari si Raspunsuri",
+      "filename_pattern": "electronics.stackexchange.com_en_all_*.zim",
+      "url_base": "https://download.kiwix.org/zim/stack_exchange/",
+      "approx_size_gb": 3.9,
+      "priority": "optional",
+      "category": "tech",
+      "description_en": "Electronics engineering Q&A. Circuits, components, Arduino, embedded systems.",
+      "description_ro": "Intrebari si raspunsuri despre inginerie electronica. Circuite, componente, Arduino."
+    },
+    {
+      "id": "wikibooks-en",
+      "name": "Wikibooks English",
+      "name_ro": "Wikibooks Engleza",
+      "filename_pattern": "wikibooks_en_all_maxi_*.zim",
+      "url_base": "https://download.kiwix.org/zim/wikibooks/",
+      "approx_size_gb": 2,
+      "priority": "optional",
+      "category": "education",
+      "description_en": "Free educational textbooks on various subjects.",
+      "description_ro": "Manuale educationale gratuite pe diverse subiecte."
+    }
+  ],
+  "install_profiles": {
+    "minimal": {
+      "description_en": "Minimal setup for 256GB drives (~55 GB)",
+      "description_ro": "Setup minimal pentru drive-uri de 256GB (~55 GB)",
+      "include": ["wikipedia-en-nopic", "wikipedia-ro-nopic", "wikimed"]
+    },
+    "recommended": {
+      "description_en": "Recommended setup for 512GB+ drives (~140 GB)",
+      "description_ro": "Setup recomandat pentru drive-uri de 512GB+ (~140 GB)",
+      "include": ["wikipedia-en-nopic", "wikipedia-ro-maxi", "wikimed", "ifixit-en", "wiktionary-en", "wikivoyage-en", "superuser"]
+    },
+    "full": {
+      "description_en": "Full setup for 1TB drives (~200 GB)",
+      "description_ro": "Setup complet pentru drive-uri de 1TB (~200 GB)",
+      "include": ["wikipedia-en-maxi", "wikipedia-en-nopic", "wikipedia-ro-maxi", "wikipedia-ro-nopic", "wikimed", "ifixit-en", "wiktionary-en", "wikivoyage-en", "superuser", "diy-stackexchange", "electronics-stackexchange", "wikibooks-en"]
+    }
+  }
+}

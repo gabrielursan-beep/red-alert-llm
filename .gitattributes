@@ -1,0 +1,21 @@
+# Windows scripts: CRLF
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Unix/macOS scripts: LF (critical for .command files)
+*.sh text eol=lf
+*.command text eol=lf
+
+# Config and docs
+*.json text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+
+# Binary files
+*.gguf binary
+*.zim binary
+*.exe binary
+*.apk binary
+*.dmg binary
+*.appimage binary
+*.hc binary

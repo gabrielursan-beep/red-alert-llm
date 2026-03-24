@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Alert LLM — Portable Offline AI</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 {
+    color: #e74c3c;
+    font-size: 2.2em;
+    text-align: center;
+    margin: 30px 0 10px;
+  }
+  .tagline {
+    text-align: center;
+    color: #aaa;
+    font-size: 1.1em;
+    margin-bottom: 40px;
+  }
+  .os-detect {
+    background: #16213e;
+    border: 2px solid #e74c3c;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .os-detect h2 { color: #e74c3c; margin-bottom: 15px; }
+  .os-icon { font-size: 3em; margin-bottom: 10px; }
+  .card {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+    border: 1px solid #2a2a4a;
+  }
+  .card h2 {
+    color: #3498db;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+  }
+  .card h3 { color: #e0e0e0; margin: 15px 0 8px; }
+  .step {
+    background: #0f3460;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-left: 4px solid #e74c3c;
+  }
+  .step-number {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  code {
+    background: #0a0a1a;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    color: #2ecc71;
+    font-size: 0.95em;
+  }
+  pre {
+    background: #0a0a1a;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 10px 0;
+    font-size: 0.9em;
+  }
+  pre code { padding: 0; background: none; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
+  .grid-item {
+    background: #0f3460;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .grid-item .label { color: #aaa; font-size: 0.85em; }
+  .grid-item .value { color: #2ecc71; font-size: 1.3em; font-weight: bold; }
+  .tab-container { margin: 20px 0; }
+  .tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 0;
+  }
+  .tab {
+    padding: 10px 20px;
+    background: #2a2a4a;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    font-size: 1em;
+  }
+  .tab.active { background: #16213e; color: #e74c3c; font-weight: bold; }
+  .tab-content {
+    display: none;
+    background: #16213e;
+    padding: 20px;
+    border-radius: 0 8px 8px 8px;
+    border: 1px solid #2a2a4a;
+  }
+  .tab-content.active { display: block; }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+  .badge-pass { background: #27ae60; color: white; }
+  .badge-warn { background: #f39c12; color: white; }
+  .badge-fail { background: #e74c3c; color: white; }
+  .lang-switch {
+    text-align: center;
+    margin: 10px 0 30px;
+  }
+  .lang-btn {
+    padding: 8px 20px;
+    border: 2px solid #3498db;
+    background: transparent;
+    color: #3498db;
+    cursor: pointer;
+    border-radius: 20px;
+    margin: 0 5px;
+    font-size: 0.95em;
+  }
+  .lang-btn.active { background: #3498db; color: white; }
+  .ro { display: none; }
+  a { color: #3498db; }
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    h1 { font-size: 1.6em; }
+    .tabs { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>&#x1F534; Red Alert LLM</h1>
+<p class="tagline">
+  <span class="en">Portable Offline AI & Knowledge Base</span>
+  <span class="ro">AI Portabil Offline & Baza de Cunostinte</span>
+</p>
+
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('ro')">Romana</button>
+</div>
+
+<!-- OS Detection -->
+<div class="os-detect">
+  <div class="os-icon" id="os-icon">&#x1F4BB;</div>
+  <h2 id="os-name">Detecting your system...</h2>
+  <p id="os-instructions"></p>
+</div>
+
+<!-- What's Included -->
+<div class="card">
+  <h2>
+    <span class="en">What's on this SSD</span>
+    <span class="ro">Ce contine acest SSD</span>
+  </h2>
+  <div class="grid">
+    <div class="grid-item">
+      <div class="label">AI Models</div>
+      <div class="value">5 models</div>
+      <div class="label">Qwen3 + Gemma 3</div>
+    </div>
+    <div class="grid-item">
+      <div class="label">Wikipedia</div>
+      <div class="value">6.8M articles</div>
+      <div class="label">EN + RO offline</div>
+    </div>
+    <div class="grid-item">
+      <div class="label">
+        <span class="en">Encrypted Vault</span>
+        <span class="ro">Seif Criptat</span>
+      </div>
+      <div class="value">200 GB</div>
+      <div class="label">AES-256</div>
+    </div>
+    <div class="grid-item">
+      <div class="label">
+        <span class="en">Platforms</span>
+        <span class="ro">Platforme</span>
+      </div>
+      <div class="value">5</div>
+      <div class="label">Win/Mac/Linux/Android/iOS</div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick Start -->
+<div class="card">
+  <h2>
+    <span class="en">Quick Start</span>
+    <span class="ro">Pornire Rapida</span>
+  </h2>
+
+  <div class="tab-container">
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('win')">Windows</button>
+      <button class="tab" onclick="showTab('mac')">macOS</button>
+      <button class="tab" onclick="showTab('linux')">Linux</button>
+      <button class="tab" onclick="showTab('android')">Android</button>
+      <button class="tab" onclick="showTab('ios')">iOS</button>
+    </div>
+
+    <div class="tab-content active" id="tab-win">
+      <div class="step">
+        <span class="step-number">1</span>
+        <strong>Setup</strong> —
+        <span class="en">Double-click</span>
+        <span class="ro">Dublu-click pe</span>
+        <code>setup\setup-windows.bat</code>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <strong>
+          <span class="en">Download Wikipedia</span>
+          <span class="ro">Descarca Wikipedia</span>
+        </strong> —
+        <span class="en">In Git Bash, run:</span>
+        <span class="ro">In Git Bash, rulati:</span>
+        <pre><code>./setup/download-knowledge.sh</code></pre>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <strong>Launch AI</strong> —
+        <span class="en">Double-click</span>
+        <span class="ro">Dublu-click pe</span>
+        <code>launchers\start-windows.bat</code>
+      </div>
+      <div class="step">
+        <span class="step-number">4</span>
+        <strong>
+          <span class="en">Open browser</span>
+          <span class="ro">Deschideti browserul</span>
+        </strong> —
+        <code>http://localhost:8080</code>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-mac">
+      <div class="step">
+        <span class="step-number">1</span>
+        <strong>Setup</strong> —
+        <span class="en">Open Terminal and run:</span>
+        <span class="ro">Deschideti Terminal si rulati:</span>
+        <pre><code>cd /Volumes/YOUR_SSD/red-alert-llm
+chmod +x setup/setup-mac.sh
+./setup/setup-mac.sh</code></pre>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <strong>
+          <span class="en">Download Wikipedia</span>
+          <span class="ro">Descarca Wikipedia</span>
+        </strong>
+        <pre><code>./setup/download-knowledge.sh</code></pre>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <strong>Launch AI</strong> —
+        <span class="en">Double-click</span>
+        <span class="ro">Dublu-click pe</span>
+        <code>launchers/start-macos.command</code>
+      </div>
+      <div class="step">
+        <span class="step-number">4</span>
+        <strong>Install Kiwix</strong> —
+        <span class="en">From the App Store (free)</span>
+        <span class="ro">Din App Store (gratuit)</span>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-linux">
+      <div class="step">
+        <span class="step-number">1</span>
+        <strong>Setup</strong>
+        <pre><code>chmod +x setup/setup-linux.sh
+./setup/setup-linux.sh</code></pre>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <strong>Download Wikipedia</strong>
+        <pre><code>./setup/download-knowledge.sh</code></pre>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <strong>Launch</strong>
+        <pre><code>./launchers/start-linux.sh</code></pre>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-android">
+      <div class="step">
+        <span class="step-number">1</span>
+        <strong>
+          <span class="en">Connect SSD via USB-C / OTG</span>
+          <span class="ro">Conectati SSD-ul prin USB-C / OTG</span>
+        </strong>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <strong>
+          <span class="en">Install PocketPal AI from Play Store</span>
+          <span class="ro">Instalati PocketPal AI din Play Store</span>
+        </strong>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <strong>
+          <span class="en">Copy model from SSD to phone</span>
+          <span class="ro">Copiati modelul de pe SSD pe telefon</span>
+        </strong>
+        <br><code>models/mobile/qwen3-4b-q3_k_m.gguf</code> (~2 GB)
+      </div>
+      <div class="step">
+        <span class="step-number">4</span>
+        <strong>
+          <span class="en">Load model in PocketPal AI and chat!</span>
+          <span class="ro">Incarcati modelul in PocketPal AI si vorbiti!</span>
+        </strong>
+      </div>
+      <p style="margin-top:10px; color:#aaa;">
+        <span class="en">Full guide:</span>
+        <span class="ro">Ghid complet:</span>
+        <code>docs/guide-android.md</code>
+      </p>
+    </div>
+
+    <div class="tab-content" id="tab-ios">
+      <div class="step">
+        <span class="step-number">1</span>
+        <strong>
+          <span class="en">Connect SSD via USB-C (or Lightning adapter)</span>
+          <span class="ro">Conectati SSD-ul prin USB-C (sau adaptor Lightning)</span>
+        </strong>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <strong>
+          <span class="en">Install PocketPal AI from App Store</span>
+          <span class="ro">Instalati PocketPal AI din App Store</span>
+        </strong>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <strong>
+          <span class="en">In Files app, copy model to "On My iPhone"</span>
+          <span class="ro">In Files, copiati modelul pe "On My iPhone"</span>
+        </strong>
+        <br><code>models/mobile/qwen3-4b-q3_k_m.gguf</code> (~2 GB)
+      </div>
+      <div class="step">
+        <span class="step-number">4</span>
+        <strong>
+          <span class="en">Import model in PocketPal AI and chat!</span>
+          <span class="ro">Importati modelul in PocketPal AI si vorbiti!</span>
+        </strong>
+      </div>
+      <p style="margin-top:10px; color:#f39c12;">
+        &#9888;
+        <span class="en">iOS limitation: model must be copied to device storage (cannot stream from SSD)</span>
+        <span class="ro">Limitare iOS: modelul trebuie copiat pe dispozitiv (nu merge direct de pe SSD)</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Documentation Links -->
+<div class="card">
+  <h2>
+    <span class="en">Documentation</span>
+    <span class="ro">Documentatie</span>
+  </h2>
+  <ul style="list-style: none; padding: 0;">
+    <li style="padding: 8px 0;">&#128214; <a href="docs/GHID-COMPLET-RO.md">Ghid Complet in Romana</a></li>
+    <li style="padding: 8px 0;">&#128295; <a href="docs/TROUBLESHOOTING.md">Troubleshooting / Rezolvarea Problemelor</a></li>
+    <li style="padding: 8px 0;">&#9889; <a href="docs/PERFORMANCE.md">Performance Benchmarks</a></li>
+    <li style="padding: 8px 0;">&#128187; <a href="docs/HARDWARE-GUIDE.md">Hardware Guide</a></li>
+    <li style="padding: 8px 0;">&#128241; <a href="docs/guide-android.md">Android Guide</a></li>
+    <li style="padding: 8px 0;">&#127822; <a href="docs/guide-ios.md">iOS Guide</a></li>
+    <li style="padding: 8px 0;">&#128274; <a href="docs/guide-vault.md">Encrypted Vault Guide</a></li>
+  </ul>
+</div>
+
+<p style="text-align: center; color: #555; margin: 30px 0; font-size: 0.9em;">
+  Red Alert LLM — Built for emergencies. Built for privacy. Built for freedom.
+</p>
+
+</div>
+
+<script>
+// OS Detection
+(function() {
+  const ua = navigator.userAgent.toLowerCase();
+  const platform = navigator.platform?.toLowerCase() || '';
+  let os = 'unknown', icon = '&#x1F4BB;', instructions = '';
+
+  if (ua.includes('win')) {
+    os = 'Windows'; icon = '&#x1F5A5;';
+    instructions = 'Double-click <code>launchers\\start-windows.bat</code> to launch the AI assistant.';
+  } else if (ua.includes('mac')) {
+    os = 'macOS'; icon = '&#127822;';
+    instructions = 'Double-click <code>launchers/start-macos.command</code> to launch the AI assistant.';
+  } else if (ua.includes('linux') && !ua.includes('android')) {
+    os = 'Linux'; icon = '&#128039;';
+    instructions = 'Run <code>./launchers/start-linux.sh</code> in terminal.';
+  } else if (ua.includes('android')) {
+    os = 'Android'; icon = '&#128241;';
+    instructions = 'Install PocketPal AI, copy model from <code>models/mobile/</code> to your phone.';
+  } else if (ua.includes('iphone') || ua.includes('ipad')) {
+    os = 'iOS'; icon = '&#127822;';
+    instructions = 'Install PocketPal AI from App Store, copy model via Files app.';
+  }
+
+  document.getElementById('os-icon').innerHTML = icon;
+  document.getElementById('os-name').innerHTML = 'Detected: <strong>' + os + '</strong>';
+  document.getElementById('os-instructions').innerHTML = instructions;
+
+  // Auto-select tab
+  const tabMap = { 'Windows': 'win', 'macOS': 'mac', 'Linux': 'linux', 'Android': 'android', 'iOS': 'ios' };
+  if (tabMap[os]) showTab(tabMap[os]);
+})();
+
+// Tab switching
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  document.querySelectorAll('.tab').forEach(el => {
+    if (el.textContent.toLowerCase().replace(/\s/g,'').includes(id)) el.classList.add('active');
+  });
+}
+
+// Language switching
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    if ((lang === 'en' && btn.textContent === 'English') || (lang === 'ro' && btn.textContent === 'Romana'))
+      btn.classList.add('active');
+  });
+  document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+  document.querySelectorAll('.ro').forEach(el => el.style.display = lang === 'ro' ? '' : 'none');
+}
+setLang('en');
+</script>
+</body>
+</html>

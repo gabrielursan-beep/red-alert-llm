@@ -1,0 +1,58 @@
+# ===========================================
+# Red Alert LLM — .gitignore
+# ===========================================
+# Large binary files are downloaded via setup scripts.
+# They should NOT be committed to git.
+
+# AI Engines (downloaded by setup scripts)
+engines/llamafile/llamafile*
+engines/koboldcpp/koboldcpp*
+engines/whisperfile/whisperfile*
+
+# AI Models (2-9 GB each, downloaded by setup scripts)
+models/primary/*.gguf
+models/alternatives/*.gguf
+models/specialized/*.gguf
+models/mobile/*.gguf
+
+# Knowledge bases (ZIM files, 1-115 GB each)
+knowledge/*.zim
+knowledge/stackexchange/*.zim
+
+# Kiwix app binaries (downloaded by setup scripts)
+apps/kiwix/kiwix-windows/*.exe
+apps/kiwix/kiwix-windows/*.dll
+apps/kiwix/*.dmg
+apps/kiwix/*.appimage
+apps/kiwix/*.apk
+
+# VeraCrypt binaries and vault
+apps/veracrypt/veracrypt-portable-windows/
+apps/veracrypt/*.dmg
+apps/veracrypt/*.tar.bz2
+vault.hc
+
+# Android APKs
+apps/android/*.apk
+
+# Portable utilities
+apps/utilities/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+System Volume Information/
+
+# Temp and log files
+*.tmp
+*.log
+*.bak
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
