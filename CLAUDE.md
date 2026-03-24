@@ -343,6 +343,13 @@ download-knowledge.sh script updated with all verified URLs and sizes.
 - All 33 files committed and pushed (4,533 lines)
 - Binary files (.gguf, .zim, .exe, engines) correctly excluded by .gitignore
 
+### Final Production Audit — DONE (2026-03-24)
+- Second full audit: fixed all remaining size inconsistencies across 6 files
+- Wikipedia RO nopic: 3.4→2.3 GB, RO maxi: 13→10.6 GB, Wiktionary: 6→8.2 GB, WikiMed: 2→2.1 GB
+- Fixed README FAQ about LAN sharing (requires manual --host change)
+- Created MANUAL-URGENTA-RO.html — 4-page A4 printable emergency manual in Romanian
+- All data verified against actual downloaded bytes — zero discrepancies remain
+
 ### Optional: Still Available to Download
 - wikipedia_en_all_maxi_2026-02.zim — 115.5 GB (full EN Wikipedia with images)
 - electronics.stackexchange.com_en_all_2026-02.zim — 3.9 GB
