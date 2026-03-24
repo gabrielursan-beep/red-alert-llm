@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint-scripts:
+    name: Lint Shell Scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ShellCheck
+        run: sudo apt-get install -y shellcheck
+      - name: Lint shell scripts
+        run: |
+          find . -name "*.sh" -type f -exec shellcheck --severity=warning {} + || true
+          find . -name "*.command" -type f -exec shellcheck --severity=warning {} + || true
+
+  validate-json:
+    name: Validate JSON configs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON
+        run: |
+          python3 -m json.tool config/models.json > /dev/null && echo "models.json OK"
+          python3 -m json.tool config/knowledge.json > /dev/null && echo "knowledge.json OK"
+
+  validate-structure:
+    name: Validate Project Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required files
+        run: |
+          MISSING=0
+          for f in README.md LICENSE TECH.md START-HERE.html CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md CHANGELOG.md config/models.json config/knowledge.json; do
+            if [ ! -f "$f" ]; then
+              echo "MISSING: $f"
+              MISSING=$((MISSING + 1))
+            else
+              echo "OK: $f"
+            fi
+          done
+          if [ $MISSING -gt 0 ]; then exit 1; fi
+
+  check-scripts-syntax:
+    name: Check Script Syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bash syntax check
+        run: |
+          for f in setup/*.sh launchers/*.sh launchers/*.command; do
+            if [ -f "$f" ]; then
+              bash -n "$f" && echo "OK: $f" || echo "FAIL: $f"
+            fi
+          done

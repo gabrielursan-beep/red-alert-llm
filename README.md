@@ -1,6 +1,31 @@
 # 🔴 Red Alert LLM — Portable Offline AI & Knowledge Base
 
-**Carry an AI assistant and the world's knowledge on a USB stick. No internet. No installation. No subscriptions.**
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux%20%7C%20Android%20%7C%20iOS-blue)]()
+[![Offline](https://img.shields.io/badge/Works%20Offline-100%25-brightgreen)]()
+[![LLM](https://img.shields.io/badge/LLM-Qwen3-purple)]()
+[![Engine](https://img.shields.io/badge/Engine-llamafile%20%7C%20KoboldCpp-orange)]()
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/gabrielursan-beep/red-alert-llm/pulls)
+[![GitHub last commit](https://img.shields.io/github/last-commit/gabrielursan-beep/red-alert-llm)](https://github.com/gabrielursan-beep/red-alert-llm/commits/master)
+[![GitHub stars](https://img.shields.io/github/stars/gabrielursan-beep/red-alert-llm?style=social)](https://github.com/gabrielursan-beep/red-alert-llm/stargazers)
+
+> **Carry an AI assistant and the world's knowledge on a USB stick. No internet. No installation. No subscriptions.**
+
+---
+
+## Table of Contents
+- [What Is This?](#what-is-this)
+- [Features](#features)
+- [Hardware Requirements](#hardware-requirements)
+- [Quick Start](#quick-start)
+- [What's Included](#whats-included)
+- [How It Compares](#how-it-compares)
+- [Performance](#performance)
+- [Platform Support](#platform-support)
+- [FAQ](#faq)
+- [Ghid in Limba Romana](#-ghid-in-limba-romana)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -14,6 +39,37 @@ Red Alert LLM is a portable offline AI toolkit that runs entirely from a USB SSD
 - **Cross-Platform** — works on Windows, macOS, Linux, Android, and iOS
 
 Everything runs offline. Your data never leaves your device.
+
+---
+
+## Features
+
+- [x] **AI Chat** in 119 languages (Qwen3, running 100% locally)
+- [x] **Offline Wikipedia** — 6.8M articles in English + Romanian
+- [x] **Medical encyclopedia** — 73,000+ articles from WikiProject Medicine
+- [x] **200 GB encrypted vault** (VeraCrypt AES-256)
+- [x] **Cross-platform** — Windows, macOS, Linux, Android, iOS
+- [x] **Zero installation** — runs directly from USB SSD
+- [x] **Zero internet** — fully air-gapped capable
+- [x] **Zero subscriptions** — one-time cost, yours forever
+- [x] **Auto-detects RAM** and picks optimal AI model (4B/8B/14B)
+- [x] **Auto-detects GPU** — Apple Metal, NVIDIA CUDA
+- [x] **Bilingual** — full documentation in English and Romanian
+
+---
+
+## How It Compares
+
+| Feature | Red Alert LLM | ChatGPT | Ollama | GPT4All |
+|---------|:---:|:---:|:---:|:---:|
+| Works offline | Yes | No | Yes | Yes |
+| No installation needed | Yes | N/A | No | No |
+| Runs from USB | Yes | No | No | No |
+| Built-in Wikipedia | Yes | No | No | No |
+| Encrypted vault | Yes | No | No | No |
+| Cross-platform (5 OS) | Yes | Web only | Partial | Partial |
+| Free and open source | Yes | No | Yes | Yes |
+| Bilingual docs (EN+RO) | Yes | No | No | No |
 
 ---
 
@@ -291,9 +347,25 @@ Vezi `docs/GHID-COMPLET-RO.md` pentru instructiuni detaliate pas cu pas.
 - [PocketPal AI](https://www.pocketpal.dev/) — mobile AI app
 - Wikipedia contributors worldwide
 
+## Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+- [Report a Bug](https://github.com/gabrielursan-beep/red-alert-llm/issues/new?template=bug_report.yml)
+- [Request a Feature](https://github.com/gabrielursan-beep/red-alert-llm/issues/new?template=feature_request.yml)
+- [Join Discussions](https://github.com/gabrielursan-beep/red-alert-llm/discussions)
+
+## Security
+
+See [SECURITY.md](SECURITY.md) for our security policy.
+
 ## License
 
 MIT License — see [LICENSE](LICENSE) file.
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=gabrielursan-beep/red-alert-llm&type=Date)](https://star-history.com/#gabrielursan-beep/red-alert-llm&Date)
 
 ---
 
